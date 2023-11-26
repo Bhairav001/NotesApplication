@@ -29,5 +29,8 @@ const UseEffect = () => {
 export default UseEffect
 
 /*
+useEffect use timer function, setTimeout, api
+  web-page reload hota hai or render hota to useEffect run hota hai
 
+  component ke under state change hota hai, to useEffect run hota hai
 */

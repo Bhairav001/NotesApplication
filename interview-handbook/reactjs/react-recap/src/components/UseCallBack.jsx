@@ -3,10 +3,11 @@ import UseCallback_A from './UseCallback_A';
 
 const UseCallBack = () => {
     const [add, setAdd] = useState(0)
-    const [count, setCount] = useState(0)
-    const Learining = useCallback(()=>{
+    const [count, setCount] = useState(0);
 
-    },[count])
+    const Learining = useCallback(()=>{
+         
+    },[count]);
   return (
     <div>
         <h3>Learning UseCallback hook</h3>
