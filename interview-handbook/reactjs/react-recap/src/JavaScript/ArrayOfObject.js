@@ -25,8 +25,8 @@ const object=[
     }
 ]
 
-const firstFiveArrayOfObjects = object.slice(0,5)
-console.log(firstFiveArrayOfObjects)
+// const firstFiveArrayOfObjects = object.slice(0,5)
+// console.log(firstFiveArrayOfObjects)
 
 
 const arrayOfArrays = [
@@ -58,13 +58,16 @@ const arrayOfArrays = [
     // ... more arrays
   ];
 
-//   const firtFiveArrays = arrayOfArrays.slice(0, Math.min(5, arrayOfArrays.length));
-//   console.log(firtFiveArrays);
+const firstFiveArray = arrayOfArrays.slice(0,Math.min(5,arrayOfArrays.length));
+
+console.log(firstFiveArray);
 
 const firtFiveArrays =[];
+
 const maxArrays = Math.min(5,arrayOfArrays.length);
+
 
 for(let i=0; i<maxArrays;i++){
     firtFiveArrays.push(arrayOfArrays[i])
 }
-console.log(firtFiveArrays)
+// console.log(firtFiveArrays)

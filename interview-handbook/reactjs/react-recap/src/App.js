@@ -18,6 +18,8 @@ import UseMemo from "./recap/UseMemo";
 import UseSelectorRecap from "./recap/UseSelectorRecap";
 import UseCallBack from "./recap/UseCallBack";
 import ReduxCounter from "./reduxCounter/ReduxCounter";
+import UseRefRecap from "./components/UseRefRecap";
+import Todo from "./components/Todo";
 function App() {
   return (
     <div className="App">
@@ -40,7 +42,9 @@ function App() {
          {/* <UseMemo/> */}
          {/* <UseSelectorRecap/> */}
          {/* <UseCallBack/> */}
-        <ReduxCounter/>
+        {/* <ReduxCounter/> */}
+        {/* <UseRefRecap/> */}
+        <Todo/>
     </div>
   );
 }
