@@ -20,32 +20,23 @@ import UseCallBack from "./recap/UseCallBack";
 import ReduxCounter from "./reduxCounter/ReduxCounter";
 import UseRefRecap from "./components/UseRefRecap";
 import Todo from "./components/Todo";
+import UseReducerGotam from "./gotam/UseReducerGotam";
+import UseMemoGotam from "./gotam/UseMemoGotam";
+import CounterGotam from "./gotam/CounterGotam";
+import CustomHookGotam from "./gotam/CustomHookGotam";
+import Home from "./MiniProject/crunApp/pages/Home";
+import { Route, Routes } from "react-router-dom";
+import Movies from "./MiniProject/crunApp/pages/Movies";
+import AdminDashboard from "./MiniProject/crunApp/admin/AdminDashboard";
+import Form from "./gotam/Form";
+import Button from "./gotam/Button";
 function App() {
   return (
-    <div className="App">
-         {/* <UseCallBackHook/> */}
-         {/* <UseMemo/> */}
-         {/* <UseRef/> */}
-         {/* <Counter/> */}
-         {/* <UseReducer/> */}
-         {/* <UseReducerHook/> */}
-         {/* <UseMemoHook/> */}
-         {/* <CustomHook/>
-         <CustomHookCounter/> */}
-         {/* <CustomHookData/> */}
-         {/* <UseEffect/> */}
-         {/* <StopWatch/> */}
-         {/* <UseState/> */}
-         {/* <CustomHook/> */}
-         {/* <UseContextReacp/> */}
-         {/* <ContextApiRecap/> */}
-         {/* <UseMemo/> */}
-         {/* <UseSelectorRecap/> */}
-         {/* <UseCallBack/> */}
-        {/* <ReduxCounter/> */}
-        {/* <UseRefRecap/> */}
-        <Todo/>
-    </div>
+     <Routes>
+        <Route path="/" element={<Button/>}/>
+        <Route path="/dashboard" element={<AdminDashboard/>}/>
+        <Route path="/movies" element={<Movies/>}/>
+     </Routes>
   );
 }
 
