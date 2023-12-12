@@ -3,6 +3,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from "axios"
 import Form from './components/Form';
+import FileUpload from './pages/FileUpload';
 function App() {
 
   const [addSection, setAddSection] = useState(false);
@@ -143,6 +144,7 @@ function App() {
              </table>
          </div>
       </div>
+      <FileUpload/>
     </>
   );
 }

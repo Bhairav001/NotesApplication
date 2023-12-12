@@ -22,7 +22,7 @@ app.get("/",(req,res)=>{
     res.json({msg:"Server is running on port 8080"})
 })
 app.use("/users",userRouter)
-app.use(authenticate)
+// app.use(authenticate)
 app.use("/crud",crudRoutes)
 app.use("/posts",postRouter)
 app.listen(PORT,async()=>{
