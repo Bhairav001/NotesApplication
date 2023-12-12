@@ -3,6 +3,9 @@ const express = require("express");
 const cors = require("cors");
 const { connection } = require("./config/db");
 const { crudRoutes } = require("./routes/crud.route");
+const { userRouter } = require("./routes/user.route");
+const { authenticate } = require("./middlewares/authenticate.middleware");
+const { postRouter } = require("./routes/post.route");
 
 require("dotenv").config()
 
@@ -18,8 +21,10 @@ app.get("/",(req,res)=>{
     // res.send("This is Crud Application")
     res.json({msg:"Server is running on port 8080"})
 })
-
+app.use("/users",userRouter)
+app.use(authenticate)
 app.use("/crud",crudRoutes)
+app.use("/posts",postRouter)
 app.listen(PORT,async()=>{
     try {
         await connection
