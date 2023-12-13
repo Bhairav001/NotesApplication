@@ -1,90 +1,95 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from "axios"
 import Form from './components/Form';
 import FileUpload from './pages/FileUpload';
+import Crud from './crud/Crud';
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './pages/Navbar';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Note from './noteApp/Note';
 function App() {
 
-  const [addSection, setAddSection] = useState(false);
-  const [formData, setFormData] = useState({
-    name:"",
-    email:"",
-    mobile:""
-  });
-  const [formDataEdit, setFormDataEdit] = useState({
-    name:"",
-    email:"",
-    mobile:"",
-    _id:""
-  });
-  const [dataList, setDataList] = useState([]);
-  const[editSection, setEditSection] = useState(false)
-  const handleOnChange=(e)=>{
-     const {value,name} = e.target
-     setFormData((prev)=>{
-        return{
-          ...prev,
-          [name]:value
-        }
-     })
-  }
-  async function handleSubmit(e){
-      e.preventDefault();
-      const data = await axios.post("http://localhost:8080/crud/create",formData)
-      if(data.data.success){
-        setAddSection(false);
-        alert(data.data.message)
-        getFetchData()
-      }
+  // const [addSection, setAddSection] = useState(false);
+  // const [formData, setFormData] = useState({
+  //   name:"",
+  //   email:"",
+  //   mobile:""
+  // });
+  // const [formDataEdit, setFormDataEdit] = useState({
+  //   name:"",
+  //   email:"",
+  //   mobile:"",
+  //   _id:""
+  // });
+  // const [dataList, setDataList] = useState([]);
+  // const[editSection, setEditSection] = useState(false)
+  // const handleOnChange=(e)=>{
+  //    const {value,name} = e.target
+  //    setFormData((prev)=>{
+  //       return{
+  //         ...prev,
+  //         [name]:value
+  //       }
+  //    })
+  // }
+  // async function handleSubmit(e){
+  //     e.preventDefault();
+  //     const data = await axios.post("http://localhost:8080/crud/create",formData)
+  //     if(data.data.success){
+  //       setAddSection(false);
+  //       alert(data.data.message)
+  //       getFetchData()
+  //     }
      
-  }
-  const getFetchData =async()=>{
-    const data = await axios.get("http://localhost:8080/crud");
-    if(data.data.success){
-      setDataList(data.data.data)
-    }
-  }
-  console.log("dataList",dataList)
-  useEffect(()=>{
-     getFetchData()
-  },[]);
+  // }
+  // const getFetchData =async()=>{
+  //   const data = await axios.get("http://localhost:8080/crud");
+  //   if(data.data.success){
+  //     setDataList(data.data.data)
+  //   }
+  // }
+  // console.log("dataList",dataList)
+  // useEffect(()=>{
+  //    getFetchData()
+  // },[]);
 
-  const handleDelete=async(id)=>{
-    const data = await axios.delete(`http://localhost:8080/crud/delete/${id}`);
+  // const handleDelete=async(id)=>{
+  //   const data = await axios.delete(`http://localhost:8080/crud/delete/${id}`);
     
-    if(data.data.success){
-       alert(data.data.message)
-       getFetchData()
-     }
-  }
-  const handleUpdate=async(e)=>{
-      e.preventDefault();
-      const data = await axios.put("http://localhost:8080/crud/update",formDataEdit)
-      console.log("updatedData",data);
-      if(data.data.success){
-        getFetchData()
-        alert(data.data.message)
-        setEditSection(false)
-      }
-  }
-  const handleEditOnChange=async(e)=>{
-    const {value,name} = e.target
-    setFormDataEdit((prev)=>{
-       return{
-         ...prev,
-         [name]:value
-       }
-    })
-  }
+  //   if(data.data.success){
+  //      alert(data.data.message)
+  //      getFetchData()
+  //    }
+  // }
+  // const handleUpdate=async(e)=>{
+  //     e.preventDefault();
+  //     const data = await axios.put("http://localhost:8080/crud/update",formDataEdit)
+  //     console.log("updatedData",data);
+  //     if(data.data.success){
+  //       getFetchData()
+  //       alert(data.data.message)
+  //       setEditSection(false)
+  //     }
+  // }
+  // const handleEditOnChange=async(e)=>{
+  //   const {value,name} = e.target
+  //   setFormDataEdit((prev)=>{
+  //      return{
+  //        ...prev,
+  //        [name]:value
+  //      }
+  //   })
+  // }
 
-  const handleEdit=(el)=>{
-       setFormDataEdit(el);
-       setEditSection(true);
-  }
+  // const handleEdit=(el)=>{
+  //      setFormDataEdit(el);
+  //      setEditSection(true);
+  // }
   return (
     <>
-      <div className="container">
+      {/* <div className="container">
          <button className="btn btn-add" onClick={()=>setAddSection(true)}>ADD</button>
          {
           addSection && (
@@ -144,7 +149,16 @@ function App() {
              </table>
          </div>
       </div>
-      <FileUpload/>
+      <FileUpload/> */}
+      {/* <Crud/> */}
+      <Navbar/>
+      <Routes>
+         <Route path='/notes' element={<Note/>}/>
+         <Route path='/crudApp' element={<Crud/>}/>
+         <Route path='/signup' element={<Signup/>}/>
+         <Route path='/login' element={<Login/>}/>
+         <Route path='/fileUpload' element={<FileUpload/>}/>
+      </Routes>
     </>
   );
 }
