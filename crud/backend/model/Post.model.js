@@ -5,14 +5,17 @@ const postSchema = mongoose.Schema({
     body:String,
     device:String,
     no_if_comments:Number
-
 })
 
+
 const PostModel = mongoose.model("post",postSchema)
+
 
 module.exports={
     PostModel
 }
+
+
 
 
 

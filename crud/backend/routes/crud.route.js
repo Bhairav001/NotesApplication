@@ -42,7 +42,6 @@ crudRoutes.put("/update",async(req,res)=>{
     const  {_id, ...rest} = req.body;
     try {
        const data =  await crudModel.updateOne({_id:_id},rest);
-        //  res.send({msg:"updated successfully"})
         res.send({success:true,message:"data updated Successfully",data:data})
     } catch (error) {
         console.log(error.message)
@@ -55,7 +54,6 @@ crudRoutes.delete("/delete/:id",async(req,res)=>{
      const id = req.params.id;
     try {
        const data =  await crudModel.deleteOne({_id:id});
-        //  res.send({msg:"updated successfully"})
         res.send({success:true,message:"data deleted Successfully",data:data})
     } catch (error) {
         console.log(error.message)

@@ -151,7 +151,7 @@ function App() {
       </div>
       <FileUpload/> */}
       {/* <Crud/> */}
-      <Navbar/>
+     <Navbar/>
       <Routes>
          <Route path='/notes' element={<Note/>}/>
          <Route path='/crudApp' element={<Crud/>}/>
