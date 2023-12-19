@@ -20,7 +20,7 @@ const editNoteSuccess = () =>{
 //common are all get request
 export const getNotes = (param={})=>(dispatch) =>{
       dispatch(getNotesRequestAction())
-      axios.get(`http://localhost:8080/notes`,param).then((res)=>{
+      axios.get(`http://localhost:7070/notes`,param).then((res)=>{
         console.log(res)
         dispatch(getNotesSuccessAction(res.data))
       }).catch((err)=>{
@@ -29,7 +29,7 @@ export const getNotes = (param={})=>(dispatch) =>{
 }
 
 export const editNote =(id,NOTEData) =>(dispatch)=>{
-     return axios.patch(`http://localhost:8080/NOTEs/${id}`,NOTEData).then(()=>{
+     return axios.patch(`http://localhost:7070/NOTEs/${id}`,NOTEData).then(()=>{
          dispatch(editNoteSuccess())
       })
 }

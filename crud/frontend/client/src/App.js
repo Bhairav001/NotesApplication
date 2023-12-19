@@ -12,6 +12,8 @@ import Note from './noteApp/Note';
 import PrivateRoute from './protectedRoute/PrivateRoute';
 import CreatePost from './noteApp/CreatePost';
 import NotePage from './noteApp/NotePage';
+import PrivateRouteApp from './noteApp/noteList/PrivateRouteApp';
+import EditBook from './noteApp/noteList/EditNote';
 function App() {
 
   // const [addSection, setAddSection] = useState(false);
@@ -163,6 +165,11 @@ function App() {
          <Route path='/fileUpload' element={<FileUpload/>}/>
          <Route path='/createNote' element={<CreatePost/>}/>
          <Route path='/notePage' element={<NotePage/>}/>
+         <Route path="/notes/:id/edit" element={
+           <PrivateRouteApp>
+              <EditBook/>
+           </PrivateRouteApp>
+        } />
       </Routes>
     </>
   );

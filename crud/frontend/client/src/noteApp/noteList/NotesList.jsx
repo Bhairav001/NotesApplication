@@ -7,7 +7,7 @@ import { getNotes } from '../../redux/notes/action';
 
 const NotesList = () => {
   const dispatch = useDispatch();
-  const notes = useSelector((store) => store.notes);
+  const notes = useSelector((store) => store.noteReducer.notes);
   const location = useLocation();
   const [searchParams] = useSearchParams();
 
@@ -27,7 +27,7 @@ const NotesList = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
       {notes.length > 0 &&
         notes.map((el) => {
-          return <NoteCard key={el.id} book={el} />;
+          return <NoteCard key={el.id} note={el} />;
         })}
     </div>
   );
