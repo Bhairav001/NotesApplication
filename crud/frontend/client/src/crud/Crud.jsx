@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Form from '../components/Form';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Crud = () => {
   const [addSection, setAddSection] = useState(false);
@@ -18,6 +19,7 @@ const Crud = () => {
   const [dataList, setDataList] = useState([]);
   const [editSection, setEditSection] = useState(false);
 
+  const navigate = useNavigate()
   const handleOnChange = (e) => {
     const { value, name } = e.target;
     setFormData((prev) => ({
@@ -81,7 +83,11 @@ const Crud = () => {
     setFormDataEdit(el);
     setEditSection(true);
   };
-
+function handleLogout(){
+  localStorage.removeItem("token")
+  navigate("/")
+  
+}
   return (
     <>
       <div className="container mx-auto p-4">
@@ -90,6 +96,12 @@ const Crud = () => {
           onClick={() => setAddSection(true)}
         >
           ADD
+        </button>
+        <button
+          className="btn btn-add bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200"
+          onClick={handleLogout}
+        >
+          Logout
         </button>
         {addSection && (
           <Form

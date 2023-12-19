@@ -9,6 +9,8 @@ import Navbar from './pages/Navbar';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Note from './noteApp/Note';
+import PrivateRoute from './protectedRoute/PrivateRoute';
+import CreatePost from './noteApp/CreatePost';
 function App() {
 
   // const [addSection, setAddSection] = useState(false);
@@ -154,10 +156,11 @@ function App() {
      <Navbar/>
       <Routes>
          <Route path='/notes' element={<Note/>}/>
-         <Route path='/crudApp' element={<Crud/>}/>
+         <Route path='/crudApp' element={<PrivateRoute><Crud/></PrivateRoute>}/>
          <Route path='/signup' element={<Signup/>}/>
          <Route path='/login' element={<Login/>}/>
          <Route path='/fileUpload' element={<FileUpload/>}/>
+         <Route path='/createNote' element={<CreatePost/>}/>
       </Routes>
     </>
   );

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate()
   function handleLogin() {
     const payload = {
       email,
@@ -22,12 +24,18 @@ const Login = () => {
       .then((res) => {
         console.log('res', res);
         localStorage.setItem('token', res.token);
+      //  if(res.token.length>0){
+      //   navigate("/crudApp")
+      //  }else{
+      //   navigate("/login")
+      //  }
+       
       })
       .catch((err) => console.log(err));
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4"> 
       <div className="max-w-md mx-auto bg-white p-8 rounded shadow-md">
         <input
           type="email"
