@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Note from './noteApp/Note';
 import PrivateRoute from './protectedRoute/PrivateRoute';
 import CreatePost from './noteApp/CreatePost';
+import NotePage from './noteApp/NotePage';
 function App() {
 
   // const [addSection, setAddSection] = useState(false);
@@ -161,6 +162,7 @@ function App() {
          <Route path='/login' element={<Login/>}/>
          <Route path='/fileUpload' element={<FileUpload/>}/>
          <Route path='/createNote' element={<CreatePost/>}/>
+         <Route path='/notePage' element={<NotePage/>}/>
       </Routes>
     </>
   );
