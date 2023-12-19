@@ -28,6 +28,10 @@ const Signup = () => {
   }
 
   return (
+    <div className='flex'>
+       <div className="">
+        <img  src="https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg?auto=compress&cs=tinysrgb&w=600" />
+      </div>
     <div className="container mx-auto p-4">
       <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-8 rounded shadow-md">
         <input
@@ -85,6 +89,7 @@ const Signup = () => {
           Signup
         </button>
       </form>
+    </div>
     </div>
   );
 };
