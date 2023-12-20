@@ -7,7 +7,7 @@ export default function PrivateRouteApp({children}) {
     const location = useLocation();
     // console.log("privateRoute",location)
     if(!isAuth){
-     return <Navigate to={"/login"} state={location.pathname} replace/>
+     return <Navigate to={"/NoteLogin"} state={location.pathname} replace/>
     }
   return children
   

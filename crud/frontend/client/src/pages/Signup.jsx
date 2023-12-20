@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -21,7 +24,10 @@ const Signup = () => {
     try {
       const response = await axios.post('http://localhost:8080/users/register', formData);
       console.log('backendData', response.data);
-      alert(response.data.msg);
+      // alert(response.data.msg);
+      toast.success("Register Sucessfully !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -88,6 +94,7 @@ const Signup = () => {
         >
           Signup
         </button>
+        <ToastContainer />
       </form>
     </div>
     </div>

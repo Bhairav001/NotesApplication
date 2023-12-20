@@ -1,6 +1,7 @@
 // CreatePost.jsx
 import React, { useState } from 'react';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const CreatePost = () => {
   const [title, setTitle] = useState('');
   const [post, setPost] = useState('');
@@ -28,7 +29,11 @@ const CreatePost = () => {
           const contentType = res.headers.get("Content-Type");
           if (contentType && contentType.includes("application/json")) {
             console.log("res",res)
+            toast.success("Note Created !", {
+              position: toast.POSITION.TOP_RIGHT,
+            });
             return res.json(); // Parse JSON response
+            
           } else {
             console.log("text",res.text)
             return res.text(); // Treat as plain text
@@ -78,6 +83,7 @@ const CreatePost = () => {
       >
         Create Note
       </button>
+      <ToastContainer />
     </div>
   );
 };

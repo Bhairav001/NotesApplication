@@ -18,15 +18,39 @@ const Note = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const deletePost = (postID) => {
-    console.log(postID)
-    fetch(`http://localhost:8080/posts/delete/${postID}`, {
-      method: "DELETE",
-      headers: {
+  const deletePost = async(postID) => {
+    // console.log(postID)
+    // fetch(`http://localhost:8080/posts/delete/${postID}`, {
+    //   method: "DELETE",
+    //   headers: {
+    //     "Authorization": localStorage.getItem("token"),
+    //   },
+    // }).then((res)=>res.json())
+    // .then((res)=>console.log("res",res))
+
+
+    let headersList = {
+        "Accept": "*/*",
+        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
         "Authorization": localStorage.getItem("token"),
-      },
-    }).then((res)=>res.json())
-    .then((res)=>console.log("res",res))
+        "Content-Type": "application/json"
+       }
+       
+       let bodyContent = JSON.stringify({
+         "title": "pune update now",
+             "post": "mh ok update awwasome",
+             "category": "mh-12 now update no day"
+       });
+       
+       let response = await fetch(`http://localhost:8080/posts/delete/${postID}`, { 
+         method: "DELETE",
+         body: bodyContent,
+         headers: headersList
+       });
+       
+       let data = await response.text();
+       console.log(data);
+       
   };
 
   const updatePost = (userID) => {

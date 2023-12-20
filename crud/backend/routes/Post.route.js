@@ -63,7 +63,7 @@ postRouter.delete("/delete/:id",async(req,res)=>{
        if(userID_making_req!==userID_in_post){
            res.send({"msg":"You are not authorized"})
        }else{
-           await PostModel.findByIdAndUpdate({"_id":id})
+           await PostModel.findByIdAndDelete({"_id":id})
            res.send("Deleted the post")
        }
     } catch (error) {

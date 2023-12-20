@@ -1,43 +1,66 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { editNote, getNotes } from '../../redux/notes/action'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { editNote, getNotes } from '../../redux/notes/action';
 
 export default function EditBook() {
-  const { id } = useParams()
-  const [title, setTitle] = useState("")
-  const [author, setAuthor] = useState("")
-  const notes = useSelector((store)=>store.authReducer.notes)
-  const dispatch = useDispatch()
-  useEffect(()=>{
-    const noteData = notes.find((el)=>el.id===+id)
-    if(noteData){
-      setTitle(noteData.note_name)
-      setAuthor(noteData.author)
-    }
-  },[])
+  const { id } = useParams();
+  const [title, setTitle] = useState('');
 
-  const handleEdit = () =>{
-    //post request or patch request.. we have to make object type of it
+  const [author, setAuthor] = useState('');
+  
+  const notes = useSelector((store) => store.noteReducer.notes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const noteData = notes.find((el) => el.id === +id);
+    if (noteData) {
+      setTitle(noteData.book_name);
+      setAuthor(noteData.author);
+    }
+  }, []);
+
+  const handleEdit = () => {
     let newData = {
       author,
-      note_name:title,
-    }
-    dispatch(editNote(id,newData)).then(()=>dispatch(getNotes()))
-  }
-  
+      book_name: title,
+    };
+    dispatch(editNote(id, newData)).then(() => dispatch(getNotes()));
+  };
+
   return (
-    <div>
-      <h1>Edit Note id: {id}</h1>
-      <div>
-        <label htmlFor="">Author</label>
-        <input type="text" value={author} onChange={(e)=>setAuthor(e.target.value)}/>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-semibold mb-4">Edit Note id: {id}</h1>
+      <div className="mb-4">
+        <label htmlFor="author" className="text-sm font-medium text-gray-600">
+          Author
+        </label>
+        <input
+          type="text"
+          id="author"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          className="w-full p-2 mt-1 border rounded focus:outline-none focus:border-blue-400"
+        />
       </div>
-      <div>
-        <label htmlFor="">Title</label>
-        <input type="text" value={title} onChange={(e)=>setTitle(e.target.value)}/>
+      <div className="mb-4">
+        <label htmlFor="title" className="text-sm font-medium text-gray-600">
+          Title
+        </label>
+        <input
+          type="text"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-full p-2 mt-1 border rounded focus:outline-none focus:border-blue-400"
+        />
       </div>
-      <button onClick={handleEdit}>Submit</button>
+      <button
+        onClick={handleEdit}
+        className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200"
+      >
+        Submit
+      </button>
     </div>
-  )
+  );
 }

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,7 +32,9 @@ const Login = () => {
       //  }else{
       //   navigate("/login")
       //  }
-       
+      toast.success("Login Successfully !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       })
       .catch((err) => console.log(err));
   }
@@ -61,6 +66,7 @@ const Login = () => {
         >
           Login
         </button>
+        <ToastContainer />
       </div>
     </div>
     </div>
