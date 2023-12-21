@@ -6,5 +6,3 @@ import { reducer as authReducer } from "./Authentication/reducer"
 let rootReducer = combineReducers({noteReducer, authReducer})
 export const store = legacy_createStore(rootReducer, applyMiddleware(thunk))
 
-// `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/books`
-//http://localhost:8080/books
