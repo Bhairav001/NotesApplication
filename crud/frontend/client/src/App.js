@@ -17,6 +17,7 @@ import EditBook from './noteApp/noteList/EditNote';
 import HomePage from './components/HomePage';
 import NoteLogin from './noteApp/noteList/NoteLogin';
 import Footer from './pages/Footer';
+import PageNotFound from './pages/PageNotFound';
 function App() {
 
   // const [addSection, setAddSection] = useState(false);
@@ -175,9 +176,9 @@ function App() {
            </PrivateRouteApp>
         } />
         <Route path='/NoteLogin' element={<NoteLogin/>}/>
-         <Route path="*" element={<h3>Page Not Found</h3>} />
+         <Route path="*" element={<PageNotFound/>} />
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }

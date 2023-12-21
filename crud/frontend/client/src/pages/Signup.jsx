@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +14,7 @@ const Signup = () => {
     age: '',
     city: '',
   });
-
+  const navigate = useNavigate()
   function handleChange(e) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -28,6 +29,9 @@ const Signup = () => {
       toast.success("Register Sucessfully !", {
         position: toast.POSITION.TOP_RIGHT,
       });
+      setTimeout(()=>{
+        navigate("/login")
+      },2000)
     } catch (error) {
       console.error('Error submitting form:', error);
     }

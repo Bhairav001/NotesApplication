@@ -35,6 +35,9 @@ const Login = () => {
       toast.success("Login Sucessfully !", {
         position: toast.POSITION.TOP_RIGHT,
       });
+      // setTimeout(()=>{
+      //   navigate("/notePage")
+      // },2000)
       })
       .catch((err) => console.log(err));
   }

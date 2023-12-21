@@ -54,8 +54,12 @@ const CreatePost = () => {
   };
 
   return (
+    <div className='flex'>
+      <div className='w-1/2 mx-auto flex items-center justify-center mx-auto'>
+        <img className='object-fill w-full h-auto' src="https://www.pixelresort.com/wp-content/uploads/2022/09/Notes-HD-2-1.png" alt="" />
+      </div>
     <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
-      <h3 className="text-xl font-semibold mb-4">Post Page</h3>
+      <h3 className="text-xl font-semibold mb-4">Notes Page</h3>
       <input
         type="text"
         placeholder="Enter Title"
@@ -65,7 +69,7 @@ const CreatePost = () => {
       />
       <input
         type="text"
-        placeholder="Enter Post"
+        placeholder="Enter Note Description"
         value={body}
         onChange={(e) => setPost(e.target.value)}
         className="mb-2 p-2 border border-gray-300 rounded-md w-full"
@@ -85,6 +89,7 @@ const CreatePost = () => {
       </button>
       {/* <Note handleSubmit={handleSubmit}/> */}
       <ToastContainer />
+    </div>
     </div>
   );
 };

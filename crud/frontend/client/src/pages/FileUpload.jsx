@@ -26,6 +26,10 @@ const FileUpload = () => {
   };
 
   return (
+    <div className='flex'>
+      <div className='w-1/2 mx-auto flex items-center justify-center mx-auto'>
+        <img className='object-fill w-full h-auto' src="https://img.freepik.com/free-vector/image-upload-concept-illustration_114360-996.jpg?w=740&t=st=1703131334~exp=1703131934~hmac=f0787bec2343cc93b029fd2a34f7711d9c6961c534fdecd1be09e8fc3fe68d8d" alt="" />
+      </div>
     <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
       <h3 className="text-2xl font-semibold mb-4">File Upload</h3>
       <input
@@ -50,6 +54,7 @@ const FileUpload = () => {
         )}
       </div>
       <ToastContainer />
+    </div>
     </div>
   );
 };
