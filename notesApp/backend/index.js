@@ -32,7 +32,7 @@ app.listen(PORT,async()=>{
     } catch (error) {
         console.log(error.message)
     }
-    console.log({msg:"Server is running on port 8080"})
+    console.log({msg:`Server is running on in the port ${PORT}`})
 })
 
 
