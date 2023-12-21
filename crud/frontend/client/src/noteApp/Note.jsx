@@ -1,9 +1,20 @@
 // Note.jsx
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const Note = () => {
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import NoteForm from './NoteForm';
+const Note = ({handleSubmit}) => {
   const [posts, setPosts] = useState("");
-
+  const [addSection, setAddSection] = useState(false);
+  const [editSection, setEditSection] = useState(false);
+  const [formDataEdit, setFormDataEdit] = useState({
+    title: '',
+    body: '',
+    device: '',
+    // _id: '',
+  }); 
   useEffect(() => {
     fetch("http://localhost:8080/posts/", {
       headers: {
@@ -18,6 +29,17 @@ const Note = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  function handleOnChange(){
+    setPosts(posts)
+  }
+  const handleEditOnChange = async (e) => {
+    const { value, name } = e.target;
+    setFormDataEdit((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+console.log("posts",posts)
   const deletePost = async(postID) => {
     // console.log(postID)
     // fetch(`http://localhost:8080/posts/delete/${postID}`, {
@@ -49,22 +71,55 @@ const Note = () => {
        });
        
        let data = await response.text();
-       console.log(data);
-       
+       toast.success(data, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      setPosts((prevPosts)=>prevPosts.filter((post)=>post._id!==postID))
+      //  window.location.reload()
   };
 
-  const updatePost = (userID) => {
-    fetch(`http://localhost:8080/posts/update/${userID}`, {
-      method: "PATCH",
-      headers: {
-        "Authorization": localStorage.getItem("token"),
-      },
-    });
+  // const updatePost = (userID) => {
+  //   fetch(`http://localhost:8080/posts/update/${userID}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Authorization": localStorage.getItem("token"),
+  //     },
+  //   });
+  // };
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    const data = await axios.patch('http://localhost:8080/posts/update', formDataEdit);
+    console.log('updatedData', data);
+  
+      alert(data.data.message);
+      window.location.reload()
+      setEditSection(false);
+  
+  };
+  const updatePost = (el) => {
+    setFormDataEdit(el)
+    setEditSection(true);
   };
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-md shadow-md">
       <h3 className="text-2xl font-semibold mb-4">All Posts you can see over here</h3>
+      {addSection && (
+          <NoteForm
+            handleSubmit={handleSubmit}
+            handleOnChange={handleOnChange}
+            handleClose={() => setAddSection(false)}
+            rest={formDataEdit}
+          />
+        )}
+        {editSection && (
+          <NoteForm
+            handleSubmit={handleUpdate}
+            handleOnChange={handleEditOnChange}
+            handleClose={() => setEditSection(false)}
+            rest={formDataEdit}
+          />
+        )}
       <hr className="my-4" />
       <div>
         {posts ? (
@@ -81,11 +136,12 @@ const Note = () => {
                   DELETE
                 </button>
                 <button
-                  onClick={() => updatePost(el._id)}
+                  onClick={() => updatePost(el)}
                   className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
                 >
                   UPDATE
                 </button>
+                <ToastContainer />
               </div>
               <hr className="my-4" />
             </div>

@@ -3,16 +3,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NoteCard = ({ note }) => {
- 
- 
+
   return (
     <div className="border border-teal-500 rounded-md overflow-hidden shadow-md">
       <Link to={`/notes/${note.id}`}>
-        <img
-          src="https://b3books.in/media/benner/images_5.jpeg"
-          alt="book_cover"
-          className="w-full"
-        />
+      <div class="bg-indigo-300 ...">
+  <img class="object-cover h-48 w-96 ..." src={note.img} />
+</div>
+       
+          {/* // src="https://b3books.in/media/benner/images_5.jpeg"
+          // alt="book_cover"
+          // className="w-full"
+         */}
+       
       </Link>
       <div className="p-4">
         <h3 className="text-xl font-semibold mb-2">{note.book_name}</h3>

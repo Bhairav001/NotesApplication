@@ -32,7 +32,7 @@ const Login = () => {
       //  }else{
       //   navigate("/login")
       //  }
-      toast.success("Login Successfully !", {
+      toast.success("Login Sucessfully !", {
         position: toast.POSITION.TOP_RIGHT,
       });
       })
@@ -41,9 +41,9 @@ const Login = () => {
 
   return (
     <div className='flex'>
-      <div>
-         <img className='object-fill h-50 w-100 ...' src="https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bm90ZXN8ZW58MHx8MHx8fDA%3D" alt="" />
-      </div>
+     <div class="w-1/2 mx-auto flex items-center justify-center mx-auto">
+  <img class='object-fill w-full h-auto' src="https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bm90ZXN8ZW58MHx8MHx8fDA%3D" alt="" />
+</div>
     <div className="container mx-auto p-4"> 
       <div className="max-w-md mx-auto bg-white p-8 rounded shadow-md">
         <input

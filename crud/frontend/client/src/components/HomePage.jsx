@@ -1,24 +1,26 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
+  const navigate = useNavigate()
   return (
     <>
     
 
-<section class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
+<section class="bg-center bg-no-repeat bg-[url('https://www.pixelresort.com/wp-content/uploads/2022/09/Notes-HD-2-1.png')] bg-gray-700 bg-blend-multiply">
     <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">We invest in the world’s potential</h1>
-        <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Write your own Idea and Save in Notes</h1>
+        <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Here at Notes App we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-            <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+            <button onClick={()=>navigate("/createNote")} class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                 Get started
                 <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
-            </a>
-            <a href="#" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+            </button>
+            <button onClick={()=>navigate("/notes")} class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
                 Learn more
-            </a>  
+            </button>  
         </div>
     </div>
 </section>
@@ -50,9 +52,7 @@ const HomePage = () => {
                       Your story starts with us.
                     </h1>
                     <p className="mt-4 text-lg text-gray-300">
-                      This is a simple example of a Landing Page you can build
-                      using Tailwind Starter Kit. It features multiple CSS
-                      components based on the Tailwindcss design system.
+                    This way, you can spend more time developing your ideas and less time waiting for inspiration to arrive. This updated article features the best digital note-taking apps and tools for all types of operating systems and platforms.
                     </p>
                   </div>
                 </div>
@@ -90,9 +90,9 @@ const HomePage = () => {
                       {/* <i className="fas fa-award"></i> */}
                       <img src="data:image/png;base64,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" alt="" />
                     </div>
-                    <h6 className="text-xl font-semibold">Awarded Agency</h6>
+                    <h6 className="text-xl font-semibold">Awarded Notes</h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      Divide details about your product or agency work into parts. A paragraph describing a feature will be enough.
+                    If you’re a writer, you need note-taking apps you can depend on. This way, you can spend more time developing your ideas and less time waiting for inspiration to arrive.
                     </p>
                   </div>
                 </div>
@@ -109,7 +109,7 @@ const HomePage = () => {
                       Free Revisions
                     </h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious.
+                      Keep you user engaged by providing meaningful information.  You can categorize your notes using tags, and these tags make it easy to organize and find notes later on. 
                     </p>
                   </div>
                 </div>
@@ -123,10 +123,10 @@ const HomePage = () => {
                       <img src="https://www.pngfind.com/pngs/m/300-3005647_sticky-notes-app-development-mobile-app-hd-png.png" alt="" />
                     </div>
                     <h6 className="text-xl font-semibold">
-                      Verified Company
+                      Verified Notes
                     </h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      Write a few lines about each one. A paragraph describing a feature will be enough. Keep you user engaged!
+                    you make an effort to capture ideas every day. You also spend time recording your thoughts. But, you’re having trouble finding the best note-taking app.
                     </p>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ const HomePage = () => {
                   href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
                   className="font-bold text-gray-800 mt-8"
                 >
-                  Check Tailwind Starter Kit!
+                  Check writing kit with writers and authors!
                 </a>
               </div>
 
@@ -543,8 +543,8 @@ const HomePage = () => {
         </section>
         <section className="relative block py-24 lg:pt-0 bg-gray-900">
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-              <div className="w-full lg:w-6/12 px-4">
+            <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48" style={{marginTop:"0px"}}>
+              <div className="w-full lg:w-6/12 px-4"  style={{width:"100%"}}>
                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300">
                   <div className="flex-auto p-5 lg:p-10">
                     <h4 className="text-2xl font-semibold">

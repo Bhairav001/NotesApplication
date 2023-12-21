@@ -73,6 +73,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({storage:storage})
+console.log("upload",upload)
 crudRoutes.post("/upload",upload.single("file"),(req,res)=>{
     console.log(req.body);
     console.log(req.file);

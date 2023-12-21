@@ -91,6 +91,8 @@ function handleLogout(){
   return (
     <>
       <div className="container mx-auto p-4">
+        <div className='flex justify-between'>
+
         <button
           className="btn btn-add bg-blue-500 text-white p-2 rounded hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200"
           onClick={() => setAddSection(true)}
@@ -103,6 +105,7 @@ function handleLogout(){
         >
           Logout
         </button>
+        </div>
         {addSection && (
           <Form
             handleSubmit={handleSubmit}

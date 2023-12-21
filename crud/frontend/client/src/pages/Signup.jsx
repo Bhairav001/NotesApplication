@@ -35,7 +35,7 @@ const Signup = () => {
 
   return (
     <div className='flex'>
-       <div className="">
+       <div className="flex items-center justify-center mx-auto">
         <img  src="https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg?auto=compress&cs=tinysrgb&w=600" />
       </div>
     <div className="container mx-auto p-4">

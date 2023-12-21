@@ -2,55 +2,55 @@
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Note from './Note';
+
 const CreatePost = () => {
   const [title, setTitle] = useState('');
-  const [post, setPost] = useState('');
-  const [category, setCategory] = useState('');
+  const [body, setPost] = useState('');
+  const [device, setCategory] = useState('');
 
-  const handleSubmit = () => {
-    const payload = {
-      title,
-      post,
-      category,
-    };
-  
-    fetch("http://localhost:8080/posts/top", {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-type": "application/json",
-        Authorization: localStorage.getItem("token"),
-      },
-    })
-      .then((res) => {
-        // Check if the response status is OK (2xx)
-        if (res.ok) {
-          // Check if the response Content-Type is JSON
-          const contentType = res.headers.get("Content-Type");
-          if (contentType && contentType.includes("application/json")) {
-            console.log("res",res)
-            toast.success("Note Created !", {
-              position: toast.POSITION.TOP_RIGHT,
-            });
-            return res.json(); // Parse JSON response
-            
-          } else {
-            console.log("text",res.text)
-            return res.text(); // Treat as plain text
-          }
-        } else {
-          console.log("please loggin",res)
-          throw new Error(`Request failed with status ${"normal",res}`);
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        // Handle success (data contains the parsed JSON response or plain text)
-      })
-      .catch((err) => {
-        console.error(err);
-        // Handle error
+  const handleSubmit = async () => {
+    try {
+      const payload = {
+        title,
+        body,
+        device,
+      };
+
+      const response = await fetch("http://localhost:8080/posts/top", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: localStorage.getItem("token"),
+        },
       });
+
+      if (response.ok) {
+        const contentType = response.headers.get("Content-Type");
+        if (contentType && contentType.includes("application/json")) {
+          const data = await response.json();
+          console.log(data);
+        } else {
+          const data = await response.text();
+          console.log(data);
+        }
+
+        toast.success("Note Created!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      } else {
+        const errorText = await response.text();
+        console.log("Request failed:", errorText);
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error
+      toast.error("Failed to create note", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
 
   return (
@@ -66,14 +66,14 @@ const CreatePost = () => {
       <input
         type="text"
         placeholder="Enter Post"
-        value={post}
+        value={body}
         onChange={(e) => setPost(e.target.value)}
         className="mb-2 p-2 border border-gray-300 rounded-md w-full"
       />
       <input
         type="text"
         placeholder="Enter Category"
-        value={category}
+        value={device}
         onChange={(e) => setCategory(e.target.value)}
         className="mb-2 p-2 border border-gray-300 rounded-md w-full"
       />
@@ -83,6 +83,7 @@ const CreatePost = () => {
       >
         Create Note
       </button>
+      {/* <Note handleSubmit={handleSubmit}/> */}
       <ToastContainer />
     </div>
   );

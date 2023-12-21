@@ -1,17 +1,28 @@
-// FileUpload.jsx
 import axios from 'axios';
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const FileUpload = () => {
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
 
   const upload = () => {
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append('file', file);
+
     axios
-      .post("http://localhost:8080/crud/upload", formData)
-      .then((res) => console.log("resfile", res))
-      .catch((err) => console.log(err));
+      .post('http://localhost:8080/crud/upload', formData)
+      .then((res) => {
+        toast.success('File Upload Successfully!', {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error('File Upload Failed!', {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      });
   };
 
   return (
@@ -29,6 +40,16 @@ const FileUpload = () => {
       >
         Upload
       </button>
+      <div>
+        {file ? (
+          <div>
+            <img src={URL.createObjectURL(file)} alt="Uploaded Image" className="max-w-full" />
+          </div>
+        ) : (
+          <h2 className="text-2xl">No Image found there</h2>
+        )}
+      </div>
+      <ToastContainer />
     </div>
   );
 };

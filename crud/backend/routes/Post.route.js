@@ -31,24 +31,35 @@ postRouter.post("/top",async(req,res)=>{
 
 
 
-postRouter.patch("/update/:id",async(req,res)=>{
-     const payload = req.body;
-     const id = req.params.id;
-     const post = await PostModel.findOne({"_id":id});
-     const userID_in_post = post.userID
-     const userID_making_req = req.body.userID;
+// postRouter.patch("/update/:id",async(req,res)=>{
+//      const payload = req.body;
+//      const id = req.params.id;
+//      const post = await PostModel.findOne({"_id":id});
+//      const userID_in_post = post.userID
+//      const userID_making_req = req.body.userID;
 
-     try {
-        if(userID_making_req!==userID_in_post){
-            res.send({"msg":"You are not authorized"})
-        }else{
-            await PostModel.findByIdAndUpdate({"_id":id},payload)
-            res.send("Updated the post")
-        }
-     } catch (error) {
-        console.log(error)
-        res.send({"msg":"Something went wrong"})
-     }
+//      try {
+//         if(userID_making_req!==userID_in_post){
+//             res.send({"msg":"You are not authorized"})
+//         }else{
+//             await PostModel.findByIdAndUpdate({"_id":id},payload)
+//             res.send("Updated the post")
+//         }
+//      } catch (error) {
+//         console.log(error)
+//         res.send({"msg":"Something went wrong"})
+//      }
+// })
+
+
+postRouter.patch("/update",async(req,res)=>{
+    const  {_id, ...rest} = req.body;
+    try {
+       const data =  await PostModel.updateOne({_id:_id},rest);
+        res.send({success:true,message:"data updated Successfully",data:data})
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 
 
