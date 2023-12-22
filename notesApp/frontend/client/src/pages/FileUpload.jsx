@@ -11,7 +11,7 @@ const FileUpload = () => {
     formData.append('file', file);
 
     axios
-      .post('http://localhost:8080/crud/upload', formData)
+      .post('https://blue-motionless-viper.cyclic.app/crud/upload', formData)
       .then((res) => {
         toast.success('File Upload Successfully!', {
           position: toast.POSITION.TOP_RIGHT,

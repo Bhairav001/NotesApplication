@@ -15,7 +15,18 @@ const Login = () => {
       email,
       password,
     };
-
+    if(email==""||password==""){
+      toast.error("Please enter all details first !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return
+    }else{
+      if (password.length < 5){
+        toast.error("Password should be at least 5 characters long", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+         return
+      }
     fetch('http://localhost:8080/users/login', {
       method: 'POST',
       body: JSON.stringify(payload),
@@ -27,20 +38,14 @@ const Login = () => {
       .then((res) => {
         console.log('res', res);
         localStorage.setItem('token', res.token);
-      //  if(res.token.length>0){
-      //   navigate("/crudApp")
-      //  }else{
-      //   navigate("/login")
-      //  }
       toast.success("Login Sucessfully !", {
         position: toast.POSITION.TOP_RIGHT,
       });
-      // setTimeout(()=>{
-      //   navigate("/notePage")
-      // },2000)
+
       })
       .catch((err) => console.log(err));
   }
+}
 
   return (
     <div className='flex'>
