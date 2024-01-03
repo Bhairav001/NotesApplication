@@ -30,7 +30,7 @@ const Crud = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const data = await axios.post('https://blue-motionless-viper.cyclic.app/crud/create', formData);
+    const data = await axios.post('http://localhost:8080/crud/create', formData);
     if (data.data.success) {
       setAddSection(false);
       alert(data.data.message);
@@ -39,7 +39,7 @@ const Crud = () => {
   }
 
   const getFetchData = async () => {
-    const data = await axios.get('https://blue-motionless-viper.cyclic.app/crud');
+    const data = await axios.get('http://localhost:8080/crud');
     if (data.data.success) {
       setDataList(data.data.data);
     }
@@ -52,7 +52,7 @@ const Crud = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    const data = await axios.delete(`https://blue-motionless-viper.cyclic.app/crud/delete/${id}`);
+    const data = await axios.delete(`http://localhost:8080/crud/delete/${id}`);
 
     if (data.data.success) {
       alert(data.data.message);
@@ -62,7 +62,7 @@ const Crud = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const data = await axios.put('https://blue-motionless-viper.cyclic.app/crud/update', formDataEdit);
+    const data = await axios.put('http://localhost:8080/crud/update', formDataEdit);
     console.log('updatedData', data);
     if (data.data.success) {
       getFetchData();

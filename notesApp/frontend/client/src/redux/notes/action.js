@@ -24,7 +24,8 @@ export const getNotes = (param={})=>(dispatch) =>{
         console.log(res)
         dispatch(getNotesSuccessAction(res.data))
       }).catch((err)=>{
-        dispatch(getNotesFailureAction())
+        console.log(err)
+        dispatch(getNotesFailureAction())  
       })
 }
 

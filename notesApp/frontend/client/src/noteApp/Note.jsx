@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NoteForm from './NoteForm';
+import MainNote from '../myNotes/MainNote';
 const Note = ({handleSubmit}) => {
   const [posts, setPosts] = useState("");
   const [addSection, setAddSection] = useState(false);
@@ -102,6 +103,7 @@ console.log("posts",posts)
   };
 
   return (
+    <>
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-md shadow-md">
       <h3 className="text-2xl font-semibold mb-4">All Posts you can see over here</h3>
       {addSection && (
@@ -151,6 +153,8 @@ console.log("posts",posts)
         )}
       </div>
     </div>
+      <MainNote/>
+    </>
   );
 };
 

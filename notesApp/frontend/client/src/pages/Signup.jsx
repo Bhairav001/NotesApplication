@@ -73,7 +73,7 @@ const Signup = () => {
       //     navigate("/login")
       //   },2000)
       // }
-      const response = await fetch("https://blue-motionless-viper.cyclic.app/users/register", {
+      const response = await fetch("http://localhost:8080/users/register", {
                 method: "POST",
                 body: JSON.stringify(formData),
                 headers: {
